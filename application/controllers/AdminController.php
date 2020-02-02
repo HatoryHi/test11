@@ -29,11 +29,10 @@ class AdminController extends Controller
 
     public function loginAction()
     {
-        session_start();
         if (!empty($_POST['login'] && $_POST['password'])) {
             $login = htmlspecialchars(trim($_POST['login']), ENT_QUOTES);
             $pass = htmlspecialchars(trim($_POST['password']), ENT_QUOTES);
-            if (($this->adminModel->login($login, $pass)) == ($_POST['login'] && $_POST['password'])) {
+            if (($this->userModel->login($login, $pass)) == ($_POST['login'] && $_POST['password'])) {
                 return $this->view->redirect('dashboard');
             }
         }

@@ -22,4 +22,17 @@ class User extends Model
         }
     }
 
+    public function login($login, $pass)
+    {
+        $params = [
+            'login' => $login,
+            'pass' => $pass
+        ];
+        $result = $this->db->query(
+            'SELECT login,pass FROM users WHERE login = :login and pass = :pass',
+            $params
+        )->fetchAll();
+        return $result[0];
+    }
+
 }

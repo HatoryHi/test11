@@ -27,19 +27,6 @@ class Admin extends Model
         $this->db->query('INSERT INTO banners VALUES (:id,:title, :image,:link,:status,:pos)', $params);
     }
 
-    public function login($login, $pass)
-    {
-        $params = [
-            'login' => $login,
-            'pass' => $pass
-        ];
-        $result = $this->db->query(
-            'SELECT login,pass FROM users WHERE login = :login and pass = :pass',
-            $params
-        )->fetchAll();
-        return $result[0];
-    }
-
     public function bannerUpd()
     {
         $id = $_POST['id'];
