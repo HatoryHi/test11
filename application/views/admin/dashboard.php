@@ -1,6 +1,7 @@
-<?php include_once 'application/views/layouts/back_style.php' ?>
-<body id="page-top">
+<?php require_once(BACK_END_STYLES); ?>
+<?php session_start() ?>
 
+<body id="page-top">
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -48,13 +49,19 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hi,<?php ?></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hi, <?php echo strtoupper(
+                                    $_SESSION['user']
+                                ); ?></span>
                         </a>
                     </li>
                     <div class="topbar-divider d-none d-sm-block"></div>
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Выйти
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <form action="/admin/logout" method="post">
+                                <button class="btn btn-success">Logout</button>
+                            </form>
+
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small"> </span>
                         </a>
                 </ul>
@@ -71,7 +78,7 @@
                 <br>
                 <table class="table">
                     <thead>
-<?php echo 1;?>
+                    <?php var_dump($_SESSION); ?>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
@@ -113,30 +120,12 @@
                     <?php endforeach; ?>
                     </tbody>
                 </table>
-
             </div>
             <!-- /.container-fluid -->
-
         </div>
-        <!-- End of Main Content -->
-        <?php include_once 'application/views/layouts/footer.php' ?>
-
-        <!-- Footer -->
-
     </div>
     <!-- End of Content Wrapper -->
-
 </div>
-<!-- End of Page Wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-
-<!-- Bootstrap core JavaScript-->
-
-
 </body>
+<?php include_once 'application/views/layouts/footer.php' ?>
 

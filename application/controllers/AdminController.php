@@ -24,6 +24,9 @@ class AdminController extends Controller
 
     public function indexAction()
     {
+        if (!empty($_SESSION)) {
+            header('Location: /admin/dashboard/');
+        }
         $this->view->render('index');
     }
 
@@ -33,15 +36,25 @@ class AdminController extends Controller
             $login = htmlspecialchars(trim($_POST['login']), ENT_QUOTES);
             $pass = htmlspecialchars(trim($_POST['password']), ENT_QUOTES);
             if (($this->userModel->login($login, $pass)) == ($_POST['login'] && $_POST['password'])) {
+                $_SESSION['user'] = $login;
+
                 return $this->view->redirect('dashboard');
             }
         }
         return $this->view->redirect('index');
     }
 
+    public function logoutAction()
+    {
+        unset($_SESSION['user']);
+        return $this->view->redirect('/');
+    }
 
     public function dashboardAction()
     {
+        if ($_SESSION['user'] == null) {
+            return $this->view->redirect('/admin/index');
+        }
         $this->view->render('Dashboard');
     }
 

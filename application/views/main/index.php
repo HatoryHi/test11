@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include_once 'application/views/layouts/front_style.php';
 
@@ -28,15 +29,10 @@ $allBan = $banners->getBanners(); ?>
         <li class="nav-item active">
             <a class="nav-link" href="#">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Frontend</span></a>
+                <span><?php echo FRONT_TITLE ?></span></a>
         </li>
-
-        <!-- Divider -->
-
     </ul>
-    <!-- End of Sidebar -->
 
-    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
@@ -51,9 +47,16 @@ $allBan = $banners->getBanners(); ?>
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
-                    <form action="admin/index/" method="post">
-                        <button class="btn btn-light">Sign in</button>
-                    </form>
+                    <?php if (empty($_SESSION['user'])) { ?>
+                        <form action="admin/index/" method="post">
+                            <button class="btn btn-light">Sign in</button>
+                        </form>
+                    <?php }
+                    if (!empty($_SESSION['user'])) { ?>
+                        <form action="admin/dashboard/" method="post">
+                            <button class="btn btn-light">Sign in</button>
+                        </form>
+                    <?php } ?>
 
                 </ul>
             </nav>

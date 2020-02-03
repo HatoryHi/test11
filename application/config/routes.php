@@ -46,5 +46,10 @@ return [
         'controller' => 'admin',
         'action' => 'delete',
     ],
+    'admin/logout' => [
+        'controller' => 'admin',
+        'action' => 'logout',
+    ],
+
 
 ];
