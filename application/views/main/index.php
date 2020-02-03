@@ -67,7 +67,7 @@ $allBan = $banners->getBanners(); ?>
                 <div class="flexslider" id="flexslider-basic">
                     <ul class="slides">
                         <?php foreach ($allBan as $data => $bannerData) : ?>
-                            <?php if ($bannerData['status'] == 0) {
+                            <?php if (!$bannerData['status'] === 0) {
                                 false;
                             } else { ?>
                                 <li>

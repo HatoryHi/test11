@@ -55,7 +55,7 @@ class AdminController extends Controller
         if ($_SESSION['user'] == null) {
             return $this->view->redirect('/admin/index');
         }
-        $this->view->render('Dashboard');
+        return $this->view->render('Dashboard');
     }
 
     public function createAction()

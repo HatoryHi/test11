@@ -7,7 +7,6 @@
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-icon rotate-n-15">
@@ -25,10 +24,8 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Backend</span></a>
         </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
     </ul>
 
     <!-- Content Wrapper -->
@@ -78,7 +75,6 @@
                 <br>
                 <table class="table">
                     <thead>
-                    <?php var_dump($_SESSION); ?>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
@@ -93,8 +89,8 @@
                     <?php use application\models\Admin;
 
                     $banners = new Admin();
-                    $allBanners = $banners->getBanners(); ?>
-                    <?php foreach ($allBanners as $item => $value) : ?>
+                    $listBanners = $banners->getBanners(); ?>
+                    <?php foreach ($listBanners as $item => $value) : ?>
                         <tr>
                             <th><?php echo $value['id'] ?></th>
                             <td><?php echo $value['name'] ?></td>
